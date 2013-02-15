@@ -78,43 +78,27 @@ draw_brick_lines([{:start_at => [2,2]},
 x = 10
 y = 10
 
-draw_brick x, y, c
+moving_brick = draw_brick x, y, c
 
 root.bind("Key-Right"){
-  TkcRectangle.new(c,0,0,640,640).fill 'white'
-  draw_brick_lines([{:start_at => [2,2]},
-                    {:right => 30},
-                    {:down => 30}, {:left => 30}, {:up => 30}
-                   ], c)
+  moving_brick.delete() #TODO delete()以后，相应的对象是否会被自动回收，以避免内存溢出
   x = x + 1
-  draw_brick x, y, c
+  moving_brick = draw_brick x, y, c
 }
 root.bind("Key-Down"){
-  TkcRectangle.new(c,0,0,640,640).fill 'white'
-  draw_brick_lines([{:start_at => [2,2]},
-                    {:right => 30},
-                    {:down => 30}, {:left => 30}, {:up => 30}
-                   ], c)
+  moving_brick.delete()
   y = y + 1
-  draw_brick x, y, c
+  moving_brick = draw_brick x, y, c
 }
 root.bind("Key-Left"){
-  TkcRectangle.new(c,0,0,640,640).fill 'white'
-  draw_brick_lines([{:start_at => [2,2]},
-                    {:right => 30},
-                    {:down => 30}, {:left => 30}, {:up => 30}
-                   ], c)
+  moving_brick.delete()
   x = x - 1
-  draw_brick x, y, c
+  moving_brick = draw_brick x, y, c
 }
 root.bind("Key-Up"){
-  TkcRectangle.new(c,0,0,640,640).fill 'white'
-  draw_brick_lines([{:start_at => [2,2]},
-                    {:right => 30},
-                    {:down => 30}, {:left => 30}, {:up => 30}
-                   ], c)
+  moving_brick.delete()
   y = y - 1
-  draw_brick x, y, c
+  moving_brick = draw_brick x, y, c
 }
 
 Tk.mainloop
