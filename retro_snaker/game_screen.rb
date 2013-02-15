@@ -54,8 +54,8 @@ def to_up(start_at, distance, canvas)
 end
 
 def draw_brick(x, y, canvas)
-  brick_width = 10
-  brick_height = 10
+  brick_width = 11
+  brick_height = 11
   cell_width = 15
   cell_height = 15
 
@@ -70,8 +70,8 @@ c.pack
 #head
 
 draw_brick_lines([{:start_at => [2,2]},
-                  {:right => 20},
-                  {:down => 20}, {:left => 20}, {:up => 20}
+                  {:right => 30},
+                  {:down => 30}, {:left => 30}, {:up => 30}
                  ], c)
 
 TkcRectangle.new(c,0,0,15,15).fill 'red'
