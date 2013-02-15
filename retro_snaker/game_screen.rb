@@ -74,14 +74,47 @@ draw_brick_lines([{:start_at => [2,2]},
                   {:down => 30}, {:left => 30}, {:up => 30}
                  ], c)
 
-TkcRectangle.new(c,0,0,15,15).fill 'red'
 
-b=TkButton.new(root){
-  text 'change color'
-  pack :padx=>2,:pady=>2,:side=>'bottom'
+x = 10
+y = 10
+
+draw_brick x, y, c
+
+root.bind("Key-Right"){
+  TkcRectangle.new(c,0,0,640,640).fill 'white'
+  draw_brick_lines([{:start_at => [2,2]},
+                    {:right => 30},
+                    {:down => 30}, {:left => 30}, {:up => 30}
+                   ], c)
+  x = x + 1
+  draw_brick x, y, c
 }
-
-b.bind("Enter"){TkcRectangle.new(c,0,0,15,15).fill 'red'}
-b.bind("Leave"){TkcRectangle.new(c,0,0,15,15).fill 'black'}
+root.bind("Key-Down"){
+  TkcRectangle.new(c,0,0,640,640).fill 'white'
+  draw_brick_lines([{:start_at => [2,2]},
+                    {:right => 30},
+                    {:down => 30}, {:left => 30}, {:up => 30}
+                   ], c)
+  y = y + 1
+  draw_brick x, y, c
+}
+root.bind("Key-Left"){
+  TkcRectangle.new(c,0,0,640,640).fill 'white'
+  draw_brick_lines([{:start_at => [2,2]},
+                    {:right => 30},
+                    {:down => 30}, {:left => 30}, {:up => 30}
+                   ], c)
+  x = x - 1
+  draw_brick x, y, c
+}
+root.bind("Key-Up"){
+  TkcRectangle.new(c,0,0,640,640).fill 'white'
+  draw_brick_lines([{:start_at => [2,2]},
+                    {:right => 30},
+                    {:down => 30}, {:left => 30}, {:up => 30}
+                   ], c)
+  y = y - 1
+  draw_brick x, y, c
+}
 
 Tk.mainloop
