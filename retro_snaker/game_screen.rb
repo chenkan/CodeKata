@@ -76,4 +76,12 @@ draw_brick_lines([{:start_at => [2,2]},
 
 TkcRectangle.new(c,0,0,15,15).fill 'red'
 
+b=TkButton.new(root){
+  text 'change color'
+  pack :padx=>2,:pady=>2,:side=>'bottom'
+}
+
+b.bind("Enter"){TkcRectangle.new(c,0,0,15,15).fill 'red'}
+b.bind("Leave"){TkcRectangle.new(c,0,0,15,15).fill 'black'}
+
 Tk.mainloop
