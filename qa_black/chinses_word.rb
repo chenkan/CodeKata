@@ -1,21 +1,21 @@
 =begin
-汉语词汇提取
+Coding Game - 汉语词汇提取
 phase       task
 1           读入一个文本，进行粗加工（剔除所有非汉字）
 2           统计单字节汉字的出现概率（出现次数/文本字符数）使用Hash作为字典
 3           统计双字节汉字的出现概率（出现次数/文本字符数）使用Hash作为词典
 4           统计双字节汉字的凝聚度，并排序及格式化输出
+5           根据结果，讨论算法可改进点
 
 参考文献
 http://www.matrix67.com/blog/archives/5044
 <<数学之美>>
-
 =end
 
 
 # Phase 1
 text = File.new("text.txt").read
-text = text.unpack("U*").select { |p| (0x4e00..0x9fa5).member? p }.pack("U*")   # TODO Error here
+text = text.unpack("U*").select { |p| (0x4e00..0x9fa5).member? p }.pack("U*")
 text_array = text.split ''
 #puts text_array
 
@@ -50,4 +50,3 @@ double_char_dict.each_key {|key| double_char_dict[key] = double_char_dict[key].t
 double_char_dict.each_key { |key| double_char_dict[key] = double_char_dict[key]/single_char_dict[key.split('')[0]]/single_char_dict[key.split('')[1]] }
 double_char_dict = double_char_dict.sort { |a, b| a[1] <=>b[1] }
 #puts double_char_dict
-
