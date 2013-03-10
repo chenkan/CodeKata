@@ -19,6 +19,7 @@ text = text.unpack("U*").select { |p| (0x4e00..0x9fa5).member? p }.pack("U*")   
 text_array = text.split ''
 #puts text_array
 
+
 # Phase 2
 single_char_dict = {}
 text_array.each do |x|
@@ -31,6 +32,7 @@ end
 single_char_dict.each_key {|key| single_char_dict[key] = single_char_dict[key].to_f/text_array.size}
 #puts single_char_dict
 
+
 # Phase 3
 double_char_dict = {}
 for i in 1..(text_array.size-1)
@@ -42,3 +44,10 @@ for i in 1..(text_array.size-1)
 end
 double_char_dict.each_key {|key| double_char_dict[key] = double_char_dict[key].to_f/text_array.size}
 #puts double_char_dict
+
+
+# Phase 4
+double_char_dict.each_key { |key| double_char_dict[key] = double_char_dict[key]/single_char_dict[key.split('')[0]]/single_char_dict[key.split('')[1]] }
+double_char_dict = double_char_dict.sort { |a, b| a[1] <=>b[1] }
+#puts double_char_dict
+
