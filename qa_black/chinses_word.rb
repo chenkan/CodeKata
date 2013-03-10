@@ -13,12 +13,13 @@ http://www.matrix67.com/blog/archives/5044
 =end
 
 
+# Phase 1
 text = File.new("text.txt").read
 text = text.unpack("U*").select { |p| (0x4e00..0x9fa5).member? p }.pack("U*")   # TODO Error here
 text_array = text.split ''
 #puts text_array
 
-
+# Phase 2
 single_char_dict = {}
 text_array.each do |x|
   if single_char_dict[x] == nil
@@ -29,3 +30,15 @@ text_array.each do |x|
 end
 single_char_dict.each_key {|key| single_char_dict[key] = single_char_dict[key].to_f/text_array.size}
 #puts single_char_dict
+
+# Phase 3
+double_char_dict = {}
+for i in 1..(text_array.size-1)
+  if double_char_dict[text_array[i -1] + text_array[i]]  == nil
+    double_char_dict[text_array[i - 1] + text_array[i]] = 1
+  else
+    double_char_dict[text_array[i-1] + text_array[i]] += 1
+  end
+end
+double_char_dict.each_key {|key| double_char_dict[key] = double_char_dict[key].to_f/text_array.size}
+#puts double_char_dict
