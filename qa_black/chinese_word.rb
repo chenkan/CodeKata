@@ -14,9 +14,8 @@ http://www.matrix67.com/blog/archives/5044
 
 
 # Phase 1
-text = File.new("text.txt").read
-text = text.unpack("U*").select { |p| (0x4e00..0x9fa5).member? p }.pack("U*")
-text_array = text.split ''
+text_str = File.new("text.txt").read
+text_array = text_str.split('').select { |p| p=~ /[\u4e00-\u9fa5]/ }
 #puts text_array
 
 
@@ -49,4 +48,4 @@ double_char_dict.each_key {|key| double_char_dict[key] = double_char_dict[key].t
 # Phase 4
 double_char_dict.each_key { |key| double_char_dict[key] = double_char_dict[key]/single_char_dict[key.split('')[0]]/single_char_dict[key.split('')[1]] }
 double_char_dict = double_char_dict.sort { |a, b| a[1] <=>b[1] }
-#puts double_char_dict
+puts double_char_dict
