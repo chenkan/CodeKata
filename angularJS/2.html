@@ -2,16 +2,17 @@
 <head>
 	<script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
 	<script type="text/javascript">
-	function HelloController($scope){
-		$scope.greeting = {text: 'Hello'};
+	function HelloController($scope){		// $scope应该就是引用HelloController的HTML节点
+		$scope.greeting = {text: 'Hello'};  // 这里的greeting赋值为JSON格式，作用域为$scope
 	}
 	</script>
 </head>
 
 <body>
 	<div ng-controller="HelloController">
+		<input ng-model="greeting.text" />   
+		<!-- 这个input直接与greeting.text实现双向绑定 -->
 		<p>{{greeting.text}}, World</p>
 	</div>
 </body>
 </html>
-
