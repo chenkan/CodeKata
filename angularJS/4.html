@@ -1,17 +1,30 @@
 <html = ng-app="myApp">
   <!-- 03 调用myApp -->
-  <body ng-controller="TextController">
-    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+  <body>
+    <script src="angular-1.0.1.min.js"></script>
     <script>
       var myAppModule = angular.module('myApp',[]);
       <!-- 01 创建一个名为myApp的module -->
       myAppModule.controller('TextController', function($scope){
       <!-- 02 并为myApp注册一个控制器 -->
         var someText = {};
-        someText.message = 'You have started your journey';
+        someText.message = 'a simple calculator';
         $scope.someText = someText;
       });
+      myAppModule.controller('FormController', function($scope){
+        $scope.funding = { startingEstimate: 10 };
+        $scope.computeNeeded = function(){
+          $scope.funding.needed = $scope.funding.startingEstimate * 10;
+        };
+        $scope.computeNeeded();
+        <!-- 这里先执行一次computeNeeded()给needed赋初值 注意末尾有() -->
+      })
     </script>
-    <p>{{someText.message}}</p>
+    <p ng-controller="TextController">{{someText.message}}</p>
+    <form ng-controller="FormController">
+      Starting: <input type="text" ng-change="computeNeeded()" ng-model="funding.startingEstimate">
+      <!-- 这里使用了ng-change特性 -->
+      <br>Recommendation( = Starting x 10): {{funding.needed}}
+    </form>
   </body>
 </html>
