@@ -1,0 +1,17 @@
+<html = ng-app="myApp">
+  <!-- 03 调用myApp -->
+  <body ng-controller="TextController">
+    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+    <script>
+      var myAppModule = angular.module('myApp',[]);
+      <!-- 01 创建一个名为myApp的module -->
+      myAppModule.controller('TextController', function($scope){
+      <!-- 02 并为myApp注册一个控制器 -->
+        var someText = {};
+        someText.message = 'You have started your journey';
+        $scope.someText = someText;
+      });
+    </script>
+    <p>{{someText.message}}</p>
+  </body>
+</html>
