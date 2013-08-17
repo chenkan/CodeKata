@@ -5,25 +5,31 @@
     <script>
       var myAppModule = angular.module('myApp',[]);
       <!-- 01 创建一个名为myApp的module -->
+
       myAppModule.controller('TextController', function($scope){
       <!-- 02 并为myApp注册一个控制器 -->
         var someText = {};
         someText.message = 'a simple calculator';
         $scope.someText = someText;
       });
+
       myAppModule.controller('FormController', function($scope){
-        $scope.funding = { startingEstimate: 10 };
+        $scope.funding = { startingEstimate: 18 };
+
         $scope.computeNeeded = function(){
-          $scope.funding.needed = $scope.funding.startingEstimate * 10;
+          $scope.funding.needed = $scope.funding.startingEstimate * 2.5;
         };
         $scope.computeNeeded();
         <!-- 这里先执行一次computeNeeded()给needed赋初值 注意末尾有() -->
+
         $scope.$watch('funding.startingEstimate', $scope.computeNeeded);
         <!-- 这里使用$watch特性代替ng-change特性实现监听 注意: -->
         <!-- 监听表达式的funding不带$scope 监听回调函数的computeNeeded带$scope -->
+
         $scope.requestFunding = function(){
           window.alert("You Need $" + $scope.funding.needed);
         };
+
         $scope.reset = function(){
           window.alert("Reset?!")
           $scope.funding.startingEstimate = 0;
