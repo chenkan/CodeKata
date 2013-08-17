@@ -21,14 +21,18 @@
         $scope.$watch('funding.startingEstimate', $scope.computeNeeded);
         <!-- 这里使用$watch特性代替ng-change特性实现监听 注意: -->
         <!-- 监听表达式的funding不带$scope 监听回调函数的computeNeeded带$scope -->
+        $scope.requestFunding = function(){
+          window.alert("You Need $" + $scope.funding.needed);
+        };
       })
     </script>
     <p ng-controller="TextController">{{someText.message}}</p>
-    <form ng-controller="FormController">
+    <form ng-controller="FormController" ng-submit="requestFunding()">
       Starting: <input type="text" ng-model="funding.startingEstimate">
       <!-- Starting: <input type="text" ng-change="computeNeeded()" ng-model="funding.startingEstimate"> -->
       <!-- 这里使用了ng-change特性 -->
       <br>Recommendation( = Starting x 10): {{funding.needed}}
+      <br><button>SUBMIT</button>
     </form>
   </body>
 </html>
