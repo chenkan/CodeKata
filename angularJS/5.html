@@ -1,0 +1,27 @@
+<html = ng-app="myApp">
+  <!-- 03 调用myApp -->
+  <body>
+    <script src="angular-1.0.1.min.js"></script>
+    <script>
+      var myAppModule = angular.module('myApp',[]);
+      <!-- 01 创建一个名为myApp的module -->
+
+      myAppModule.controller('ListController', function($scope){
+        <!-- 02 并为myApp注册一个控制器 -->
+        var students = [{name: 'Mary Contrary', id:'1'},
+          {name: 'Jack Sprat', id: '2'},
+          {name: 'Jill Hill', id: '3'}];
+          $scope.students = students;
+          $scope.insertTom = function(){
+            $scope.students.splice(1, 0, {name: 'Tom Thumb', id: '4'});
+          };
+      });
+    </script>
+    <ul ng-controller="ListController">
+      <button ng-click="insertTom()">Insert</button>
+      <li ng-repeat="student in students">
+        <a href="/student/view/{{student.id}}">{{$index + 1}} - {{student.name}}</a>
+      </li>
+    </ul>
+  </body>
+</html>
