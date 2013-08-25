@@ -16,7 +16,7 @@
 
         $scope.bill = {};
 
-        $scope.totalCart = function(){
+        function totalCart(){
           var total = 0;
           for (var i = 0, len = $scope.items.length; i < len; i++){
             total = total + $scope.items[i].price * $scope.items[i].quantity;
@@ -24,15 +24,20 @@
           return total;
         };
 
-        $scope.subtotal = function(){
-          return $scope.totalCart() - $scope.bill.discount;
-        };
-
-        function calculateDiscount(newValue, oldValue, scope){
-          $scope.bill.discount = newValue > 100 ? 10 : 0;
+        function calculateDiscount(){
+          return $scope.bill.total > 100 ? 10 : 0;
         }
 
-        $scope.$watch($scope.totalCart, calculateDiscount);}
+        function updateBill(){
+          $scope.bill.total = totalCart();
+          $scope.bill.discount = calculateDiscount();
+          $scope.bill.subtotal = $scope.bill.total - $scope.bill.discount;
+        }
+
+        $scope.$watch('items', updateBill, true);
+        <!-- 1. 这里监控变量使用'items'，使用$scope.items不起作用 -->
+        <!-- 2. 须要带参数true，开启deepWatch特性 -->
+      }
     </script>
   </head>
   <body ng-controller="CartController">
@@ -47,9 +52,9 @@
       <button ng-click="remove($index)">Remove</button>
       <!-- 注意$index 它包含了ng-repeat索引值 -->
     </div>
-    <div>Total: {{totalCart() | currency}}</div>
-    <div>Discount: {{bill.discount | currency}}</div>
-    <div>Subtotal: {{subtotal() | currency}}</div>
+    <div>Total: {{bill.total | currency}}</div>
+    <div>Disco: {{bill.discount | currency}}</div>
+    <div>Subto: {{bill.subtotal | currency}}</div>
   </body>
 </html>
 <!-- 对于angularJS时序图的设想 -->
