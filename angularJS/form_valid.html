@@ -1,0 +1,27 @@
+<html ng-app>
+  <head>
+    <script src="angular-1.0.1.min.js"></script>
+    <script>
+      function AddUserController($scope) {
+        $scope.message = '';
+        $scope.addUser = function () {
+          $scope.message = 'Thanks, ' + $scope.user.first + $scope.user.last + ', we added you >_<';
+        };
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Sign Up</h1>
+    <form name='addUserForm' ng-controller="AddUserController">
+      <div ng-show='message'>{{message}}</div>
+      <!-- 注意，这里message参数并不是布尔值 -->
+      <div>First name: <input name='firstName' ng-model='user.first' required></div>
+      <div>Last name: <input ng-model='user.last' required></div>
+      <div>Email: <input type='email' ng-model='user.email' required></div>
+      <div>Age: <input type='number' ng-model='user.age' ng-maxlength='3' ng-min='1'></div>
+      <!-- 注意, 在某些字段上我们使用了HTML5中的required属性以及email和number类型的input元素来处理我们的验证 -->
+      <div><button ng-click='addUser()' ng-disabled='!addUserForm.$valid'>Submit</button></div>
+      <!-- Note that "addUserForm" is the form's name -->
+    </form>
+  </body>
+</html>
