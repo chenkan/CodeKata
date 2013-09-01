@@ -27,7 +27,7 @@ def search_prime(nth):
     while True:
         checked_num = checked_num + 1
         check_result = is_prime(checked_num)
-        print str(checked_num) + " : " + str(check_result)
+        # print str(checked_num) + " : " + str(check_result)
         if check_result:
             nth = nth - 1
         if nth == 0:
