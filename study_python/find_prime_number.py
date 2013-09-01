@@ -1,3 +1,6 @@
+# coding=utf-8
+__author__ = 'ChenKan'
+
 def is_prime(n):
     # 0 and 1 are not primes
     if n < 2:
@@ -8,24 +11,25 @@ def is_prime(n):
     # all other even numbers are not primes
     if not n & 1:
         return False
-    # range starts with 3 and only needs to go up the squareroot of
-    # n
-    # for all odd numbers
-    for x in range(3, int(n**0.5)+1, 2):
+    # range starts with 3 and only needs to go up the SQUAREROOT of n
+    # for all ODD numbers
+    for x in range(3, int(n**0.5) + 1, 2):
         if n % x == 0:
             return False
     return True
 
-def search_prime(num):
-    start_num = 1
+# search the nth prime number
+def search_prime(nth):
+    checked_num = 1
     while True:
-        start_num = start_num + 1
-        print start_num
-        if is_prime(start_num):
-            print is_prime(start_num)
-            num = num - 1
-        if num == 0:
-            return start_num
+        checked_num = checked_num + 1
+        check_result = is_prime(checked_num)
+        print str(checked_num) + " : " + str(check_result)
+        if check_result:
+            nth = nth - 1
+        if nth == 0:
+            break
+    return checked_num
 
 if __name__ == '__main__':
-    print search_prime(int(raw_input()))
+    print search_prime(int(raw_input("搜索第N个质数\n")))
