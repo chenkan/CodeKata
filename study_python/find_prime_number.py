@@ -1,6 +1,8 @@
 # coding=utf-8
 __author__ = 'ChenKan'
 
+import datetime
+
 def is_prime(n):
     # 0 and 1 are not primes
     if n < 2:
@@ -20,6 +22,7 @@ def is_prime(n):
 
 # search the nth prime number
 def search_prime(nth):
+    begin_time = datetime.datetime.now()
     checked_num = 1
     while True:
         checked_num = checked_num + 1
@@ -29,6 +32,7 @@ def search_prime(nth):
             nth = nth - 1
         if nth == 0:
             break
+    print datetime.datetime.now() - begin_time
     return checked_num
 
 if __name__ == '__main__':
