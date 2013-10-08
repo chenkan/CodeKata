@@ -1,6 +1,6 @@
 // Usage
 // 1. install node and libs
-// 2. run 'node file.js' to start server
+// 2. run 'node upload_file.js' to start server
 // 3. run 'curl -F "upload=@/The/File/Path" http://localhost:8888/upload' to upload
 // 4. Then you can see uploaded file under current dir
 // 5. run 'curl localhost:8888' to show all uploaded files
