@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="简单示例" failures="0" tests="1" time="0.03" errors="0">
+  <properties/>
+  <testcase name="testEcho" time="0.009" classname="com.netease.hzqa.ci.HelloWorldTest"/>
+</testsuite>

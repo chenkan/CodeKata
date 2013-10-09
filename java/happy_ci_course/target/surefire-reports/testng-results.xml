@@ -1,0 +1,14 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="Unit_Test_Of_Happy_Ci_Course">
+    <groups>
+    </groups>
+    <test name="简单示例">
+      <class name="com.netease.hzqa.ci.HelloWorldTest">
+        <test-method status="PASS" signature="testEcho()" name="testEcho" duration-ms="9" started-at="2013-10-09T21:33:47Z" finished-at="2013-10-09T21:33:47Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>

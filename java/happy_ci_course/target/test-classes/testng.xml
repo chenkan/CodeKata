@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Unit_Test_Of_Happy_Ci_Course">
+
+    <test verbose="10" name="简单示例" annotations="JDK">
+        <classes>
+            <class name="com.netease.hzqa.ci.HelloWorldTest"/>
+        </classes>
+    </test>
+
+</suite>
